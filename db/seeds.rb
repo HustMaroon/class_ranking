@@ -5,3 +5,45 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+users = [
+  {
+    name: 'Vũ Khánh Ly',
+    email: 'vukhanhly@thaitho.edu'
+  },
+  {
+    name: 'Trần Thị Thu Hằng',
+    email: 'tranthithuhang@thaitho.edu'
+  },
+  {
+    name: 'Vũ Quỳnh Chi',
+    email: 'vuquynhchi@thaitho.edu'
+  },
+  {
+    name: 'Nguyễn Yến Trang',
+    email: 'nguyenyentrang@thaitho.edu'
+  },
+  {
+    name: 'Phạm Trần Diệu Anh',
+    email: 'phamtrandieuanh@thaitho.edu'
+  },
+  {
+    name: 'Phạm Tuyết Nhi',
+    email: 'phạmtuyetnhi@thaitho.edu'
+  },
+  {
+    name: 'Trịnh Phương Linh',
+    email: 'trinhphuonglinh@thaitho.edu'
+  },
+  {
+    name: 'Trịnh Thị Ngọc Diệu',
+    email: 'trinhthingocdieu@thaitho.edu'
+  }
+]
+
+users.each do |user|
+  User.create!(name: user[:name], email: user[:email], password: user[:email].split('@').first, role: :assessor)
+end
+
+User.create!(name: 'Nguyễn Ngọc Bảo Trâm', email: 'nguyengocbaotram@thaitho.edu', password: 'nguyengocbaotram', role: :mod)
+User.create!(name: 'Hà Thị Thảo', email: 'hathithao@thaitho.edu', password: 'hathithao', role: :admin)

@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "rails_admin": "3.2.0",
+    "sass": "^1.79.1"
+  },
+  "scripts": {
+    "build:css": "sass ./app/assets/stylesheets/rails_admin.scss:./app/assets/builds/rails_admin.css --no-source-map --load-path=node_modules"
+  },
+  "resolutions": {
+    "rails_admin/@fortawesome/fontawesome-free": "^5.15.0"
+  }
+}
