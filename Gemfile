@@ -53,7 +53,9 @@ gem 'bootstrap', '~> 5.1.3'
 # Use Devise
 gem 'devise'
 
- gem 'rails_admin', '~> 3.0', github: "railsadminteam/rails_admin", branch: "master"
+gem 'rails_admin', '~> 3.0', github: "railsadminteam/rails_admin", branch: "master"
+
+gem "jquery-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
