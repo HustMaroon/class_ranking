@@ -47,3 +47,42 @@ end
 
 User.create!(name: 'Nguyễn Ngọc Bảo Trâm', email: 'nguyengocbaotram@thaitho.edu', password: 'nguyengocbaotram', role: :mod)
 User.create!(name: 'Hà Thị Thảo', email: 'hathithao@thaitho.edu', password: 'hathithao', role: :admin)
+
+klasses = [
+  {
+    name: '6A',
+    attendees: 47
+  },
+  {
+    name: '6B',
+    attendees: 47
+  },
+  {
+    name: '7A',
+    attendees: 47
+  },
+  {
+    name: '7B',
+    attendees: 47
+  },
+  {
+    name: '8A',
+    attendees: 47
+  },
+  {
+    name: '8B',
+    attendees: 47
+  },
+  {
+    name: '9A',
+    attendees: 47
+  },
+  {
+    name: '9B',
+    attendees: 47
+  }
+]
+
+klasses.each do |klass|
+  Klass.create!(name: klass[:name], attendees: klass[:attendees])
+end

@@ -1,1 +1,40 @@
-hihi
+<div class="container-fluid pt-4 px-4">
+  <div class="row g-4">
+    <div class="col-sm-12 col-xl-12">
+      <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Lịch sử chấm điểm</h6>
+        <table class="table">
+          <thead>
+              <tr>
+                  <th scope="col">Ngày</th>
+                  <th scope="col">Lớp</th>
+                  <th scope="col">Sĩ Số</th>
+                  <th scope="col">Vệ Sinh</th>
+                  <th scope="col">Trang Phục</th>
+                  <th scope="col">Hoạt Động Ngoài Giờ</th>
+                  <th scope="col">Ghi Chú</th>
+                  <th scope="col">Thao Tác</th>
+              </tr>
+          </thead>
+          <tbody>
+            <% @scoring_records.each do |sr|%>
+              <tr>
+                <td><%= sr.assessment_date.to_wday %>, <%= sr.assessment_date %></td>
+                <td><%= sr.klass.name %></td>
+                <td><%= sr.attendees %></td>
+                <td><%= sr.cleaness %></td>
+                <td><%= sr.clothing %></td>
+                <td><%= sr.outdoor_act %></td>
+                <td><%= sr.note %></td>
+                <td><%= link_to "Cập nhật", edit_scoring_record_path(sr) %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <% if current_user.assessor? %>
+        <%= link_to 'Chấm Điểm', new_scoring_record_path, class: 'btn btn-primary'%>
+      <% end %>
+    </div>
+  </div>
+</div>

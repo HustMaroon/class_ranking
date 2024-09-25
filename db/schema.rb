@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_09_16_165906) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_23_163029) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,10 +24,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_16_165906) do
   create_table "scoring_records", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "klass_id"
-    t.integer "criteria"
     t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "assessment_date", null: false
+    t.integer "attendees", null: false
+    t.integer "cleaness", null: false
+    t.integer "clothing", null: false
+    t.integer "outdoor_act", null: false
+    t.string "note", null: false
     t.index ["klass_id"], name: "index_scoring_records_on_klass_id"
     t.index ["user_id"], name: "index_scoring_records_on_user_id"
   end

@@ -1,0 +1,5 @@
+<% if @scoring_record.errors.empty? %>
+  $(location).prop('href', "<%= scoring_records_url %>")
+<% else %>
+  alert("<%= @scoring_record.errors.messages.values.flatten.join(',') %>")
+<% end %>
