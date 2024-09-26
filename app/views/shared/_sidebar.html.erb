@@ -13,7 +13,7 @@
                 <div class="navbar-nav w-100">
                   <% if current_user.mod? %>
                     <%= link_to dashboard_path, class: "nav-item nav-link #{request.path.include?('dashboard') ? 'active' : ''}" do %>
-                      <i class="fa fa-tachometer-alt me-2"> Tổng kết
+                      <i class="fa fa-tachometer-alt me-2"></i> Tổng kết
                     <% end %>
                   <% end %>
                   <%= link_to scoring_records_path, class: "nav-item nav-link #{request.path.include?('scoring_record') ? 'active' : ''}" do %>

@@ -49,7 +49,7 @@
                           <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                               <a href="#" class="dropdown-item">Thông tin cá nhân</a>
                               <a href="#" class="dropdown-item">Cài đặt</a>
-                              <a href="#" class="dropdown-item">Đăng Xuất</a>
+                              <%= link_to 'Đăng Xuất', destroy_user_session_path, method: :delete, class: 'dropdown-item'%>
                           </div>
                       </div>
                   </div>
