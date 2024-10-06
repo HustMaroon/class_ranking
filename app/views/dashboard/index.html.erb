@@ -2,7 +2,8 @@
   <div class="row g-4">
     <div class="col-sm-12 col-xl-12">
       <div class="bg-light rounded h-100 p-4">
-        <h6 class="mb-4">Xếp hạng các lớp</h6>
+        <h4 class="mb-4">Xếp hạng các lớp</h4>
+        <h5 class="mb-4"><%= link_to('<<', dashboard_path(monday: @current_monday - 7.days))%> Tuần <%= @current_monday.strftime('%d/%m')%> - <%= (@current_monday + 5.days).strftime('%d/%m/%Y')%> <%= link_to('>>', dashboard_path(monday: @current_monday + 7.days))%></h5>
         <table class="table">
           <thead>
               <tr>
@@ -12,7 +13,7 @@
                   <th scope="col">Vệ Sinh</th>
                   <th scope="col">Trang Phục</th>
                   <th scope="col">Hoạt Động Ngoài Giờ</th>
-                  <th scope="col">Điểm Trung Bình</th>
+                  <th scope="col">Tổng Điểm</th>
                   <th scope="col">Thao Tác</th>
               </tr>
           </thead>
@@ -26,7 +27,12 @@
                 <td><%= rk[3] %></td>
                 <td><%= rk[4] %></td>
                 <td><%= rk[5] %></td>
-                <td><%= link_to "Chi tiết", '#' %>
+                <td>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detail_modal_<%= rk[6] %>">
+                    Chi tiết
+                  </button>
+                </td>
               </tr>
             <% end %>
           </tbody>
@@ -35,3 +41,7 @@
     </div>
   </div>
 </div>
+
+<% @rankings.each do |rk| %>
+  <%= render 'detail_modal', klass_id: rk[6], klass_name: rk[0] %>
+<% end %>

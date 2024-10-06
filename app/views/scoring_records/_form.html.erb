@@ -16,13 +16,12 @@
 
       <div class="mb-3">
         <%= f.label :klass_id, 'Lớp:'%>
-        <%= f.select :klass_id, options_for_select(Klass.all.pluck(:name, :id)), class: 'form-select' %>
+        <%= f.select :klass_id, options_for_select(@klasses.pluck(:name, :id)), class: 'form-select' %>
       </div>
 
       <div class="mb-3">
         <%= f.label :attendees, 'Chuyên cần:'%>
         <%= f.number_field :attendees, class: 'form-control', required: true, min: 0, max: 25 %>
-        <div class="form-text">Sĩ số lớp: <span id="autoload_attendees"></span></div>
       </div>
 
       <div class="mb-3">
@@ -42,9 +41,9 @@
 
       <div class="mb-3">
         <%= f.label :note, 'Ghi Chú:'%>
-        <%= f.text_area :note, value: @scoring_record.note || "Sĩ Số: \n Vệ Sinh: \n Trang Phục: \n Hoạt động ngoài giờ: ", class: 'form-control' %>
+        <%= f.text_area :note, value: @scoring_record.note || "Sĩ Số: \n Vệ Sinh: \n Trang Phục: \n Hoạt động ngoài giờ: ", class: 'form-control', style: 'height: 150px' %>
       </div>
 
-      <%= f.button "Lưu", type: :submit, class: 'btn btn-primary'%>
+      <%= f.button "Lưu", type: :subm, class: 'btn btn-primary'%>
     <% end %>
 </div>

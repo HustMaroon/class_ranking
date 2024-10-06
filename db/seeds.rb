@@ -59,30 +59,32 @@ klasses = [
   },
   {
     name: '7A',
-    attendees: 47
+    attendees: 46
   },
   {
     name: '7B',
-    attendees: 47
+    attendees: 44
   },
   {
     name: '8A',
-    attendees: 47
+    attendees: 33
   },
   {
     name: '8B',
-    attendees: 47
+    attendees: 31
   },
   {
     name: '9A',
-    attendees: 47
+    attendees: 39
   },
   {
     name: '9B',
-    attendees: 47
+    attendees: 40
   }
 ]
 
 klasses.each do |klass|
   Klass.create!(name: klass[:name], attendees: klass[:attendees])
 end
+
+

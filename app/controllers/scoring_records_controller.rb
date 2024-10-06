@@ -10,6 +10,7 @@ class ScoringRecordsController < ApplicationController
 
   def new
     @scoring_record = ScoringRecord.new
+    @klasses = Klass.all
   end
 
   def create

@@ -2,21 +2,25 @@ class DashboardController < ApplicationController
   before_action :only_allow_mod
 
   def index
-    this_monday = Date.today.wday == 1 ? Date.today : Date.today.prev_occurring(:monday)
+    this_monday = Date.today.prev_occurring(:monday)
+    @current_monday = params[:monday].present? ? params[:monday].to_date : this_monday.to_date
     sql = <<-SQL
       SELECT klasses.name as kname, 
-        AVG(scoring_records.attendees) as avg_attendees,
-        AVG(scoring_records.cleaness) as avg_cleaness,
-        AVG(scoring_records.clothing) as avg_clothing,
-        AVG(scoring_records.outdoor_act) as avg_outdoor_act,
-        (AVG(scoring_records.attendees) + AVG(scoring_records.cleaness) + AVG(scoring_records.clothing) + AVG(scoring_records.outdoor_act)) / 4 as avg
+        SUM(scoring_records.attendees) as sum_attendees,
+        SUM(scoring_records.cleaness) as sum_cleaness,
+        SUM(scoring_records.clothing) as sum_clothing,
+        SUM(scoring_records.outdoor_act) as sum_outdoor_act,
+        (SUM(scoring_records.attendees) + SUM(scoring_records.cleaness) + SUM(scoring_records.clothing) + SUM(scoring_records.outdoor_act)) as total,
+        klasses.id as id
       FROM klasses
       INNER JOIN scoring_records ON scoring_records.klass_id = klasses.id
-      WHERE scoring_records.assessment_date >= '#{this_monday.to_date}'
+      WHERE scoring_records.assessment_date >= '#{@current_monday}'
+      AND scoring_records.assessment_date <= '#{@current_monday + 5.days}'
       GROUP BY klasses.id
-      ORDER BY avg;
+      ORDER BY total;
     SQL
     @rankings = ActiveRecord::Base.connection.execute(sql).values
+    @scoring_records = ScoringRecord.where(assessment_date: @current_monday..(@current_monday + 5.days))
   end
 
   private
