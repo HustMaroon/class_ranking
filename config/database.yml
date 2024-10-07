@@ -23,3 +23,5 @@ test:
 production:
   <<: *default
   database: class_ranking_prod
+  username: class_ranking
+  password: 12345678
