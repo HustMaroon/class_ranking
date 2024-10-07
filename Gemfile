@@ -56,6 +56,7 @@ gem 'devise'
 gem 'rails_admin', '~> 3.0', github: "railsadminteam/rails_admin", branch: "master"
 
 gem "jquery-rails"
+gem 'unicorn'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -72,6 +73,12 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   gem 'byebug'
+  gem 'capistrano', '~> 3.17.1'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
+  gem 'capistrano-rvm'
+  gem 'capistrano-sidekiq'
 end
 
 group :test do

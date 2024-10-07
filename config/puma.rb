@@ -8,14 +8,9 @@ max_threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
 min_threads_count = ENV.fetch("RAILS_MIN_THREADS") { max_threads_count }
 threads min_threads_count, max_threads_count
 
-# Specifies the `worker_timeout` threshold that Puma will use to wait before
-# terminating a worker in development environments.
-#
-worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
-
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 #
-port ENV.fetch("PORT") { 3000 }
+port        ENV.fetch("PORT") { 3000 }
 
 # Specifies the `environment` that Puma will run in.
 #
@@ -23,6 +18,7 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Specifies the `pidfile` that Puma will use.
 pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
+
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked web server processes. If using threads and workers together
@@ -39,5 +35,21 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 #
 # preload_app!
 
-# Allow puma to be restarted by `bin/rails restart` command.
+# Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
+
+if ENV["RAILS_ENV"] == "production" or ENV["RAILS_ENV"] == "staging"
+  app_dir = File.expand_path("../..", __FILE__)
+  tmp_dir = "#{app_dir}/tmp"
+  # Set up socket location
+  bind "unix://#{tmp_dir}/sockets/puma.sock"
+
+  # Logging
+  stdout_redirect "#{app_dir}/log/puma.stdout.log", "#{app_dir}/log/puma.stderr.log", true
+
+  # Set master state locations
+  state_path "#{tmp_dir}/pids/puma.state"
+
+  # daemonize
+  daemonize true
+end
