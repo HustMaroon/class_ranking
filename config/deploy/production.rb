@@ -36,13 +36,13 @@ namespace :deploy do
   #   end
   # end
 
-  task :restart do
-    invoke 'unicorn:legacy_restart'
-  end
+  # task :restart do
+  #   invoke 'unicorn:legacy_restart'
+  # end
 
 end
 
-after 'deploy:publishing', 'deploy:restart'
+# after 'deploy:publishing', 'deploy:restart'
 # after 'deploy:restart_sidekiq', 'deploy:restart'
 
 # server-based syntax
