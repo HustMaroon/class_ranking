@@ -30,7 +30,9 @@ require "capistrano/bundler"
 task 'production' => [:compile]
 #task 'background' => [:whenever]
 require "capistrano/rails/migrations"
-task 'production' => [:unicorn]
+require 'capistrano/puma'
+install_plugin Capistrano::Puma  # Default puma tasks
+install_plugin Capistrano::Puma::Systemd
 # Include tasks from other gems included in your Gemfile
 #
 # For documentation on these, see for example:

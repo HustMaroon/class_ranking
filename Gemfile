@@ -76,7 +76,7 @@ group :development do
   gem 'capistrano', '~> 3.17.1'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
-  gem 'capistrano3-unicorn'
+  gem 'capistrano3-puma' 
   gem 'capistrano-rvm'
   gem 'capistrano-sidekiq'
 end
