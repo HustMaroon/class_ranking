@@ -17,7 +17,7 @@ class DashboardController < ApplicationController
       WHERE scoring_records.assessment_date >= '#{@current_monday}'
       AND scoring_records.assessment_date <= '#{@current_monday + 5.days}'
       GROUP BY klasses.id
-      ORDER BY total;
+      ORDER BY total DESC;
     SQL
     @rankings = ActiveRecord::Base.connection.execute(sql).values
     @scoring_records = ScoringRecord.where(assessment_date: @current_monday..(@current_monday + 5.days))

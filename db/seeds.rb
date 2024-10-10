@@ -29,7 +29,7 @@ users = [
   },
   {
     name: 'Phạm Tuyết Nhi',
-    email: 'phạmtuyetnhi@thaitho.edu'
+    email: 'phamtuyetnhi@thaitho.edu'
   },
   {
     name: 'Trịnh Phương Linh',
@@ -45,7 +45,7 @@ users.each do |user|
   User.create!(name: user[:name], email: user[:email], password: user[:email].split('@').first, role: :assessor)
 end
 
-User.create!(name: 'Nguyễn Ngọc Bảo Trâm', email: 'nguyengocbaotram@thaitho.edu', password: 'nguyengocbaotram', role: :mod)
+User.create!(name: 'Nguyễn Ngọc Bảo Trâm', email: 'nguyenngocbaotram@thaitho.edu', password: 'nguyenngocbaotram', role: :mod)
 User.create!(name: 'Hà Thị Thảo', email: 'hathithao@thaitho.edu', password: 'hathithao', role: :admin)
 
 klasses = [
